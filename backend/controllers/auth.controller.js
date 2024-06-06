@@ -8,11 +8,7 @@ export const signup = [
   body("email").isEmail().withMessage("Invalid email."),
   body("password").isLength({ min: 6 }).withMessage("Password must be at least 6 characters long."),
   body("confirmPassword").custom((value, { req }) => value === req.body.password).withMessage("Passwords don't match."),
-  body("firstName").trim().escape(),
-  body("lastName").trim().escape(),
-  body("country").trim().escape(),
-  body("mobileNo").trim().escape(),
-  body("dateOfBirth").isISO8601().toDate(),
+  body("gender").trim().escape(),
 
   async (req, res) => {
     try {
@@ -21,7 +17,7 @@ export const signup = [
         return res.status(400).json({ errors: errors.array() });
       }
 
-      const { firstName, lastName, username, password, gender, dateOfBirth, country, email, mobileNo } = req.body;
+      const { username, password, gender, email } = req.body;
 
       const user = await User.findOne({ username });
       if (user) {
@@ -35,16 +31,11 @@ export const signup = [
       const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
 
       const newUser = new User({
-        firstName,
-        lastName,
         username,
         password: hashedPassword,
         gender,
         profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
-        dateOfBirth,
-        country,
         email,
-        mobileNo,
       });
 
       if (newUser) {
@@ -53,8 +44,6 @@ export const signup = [
 
         res.status(201).json({
           _id: newUser._id,
-          firstName: newUser.firstName,
-          lastName: newUser.lastName,
           username: newUser.username,
           profilePic: newUser.profilePic,
         });
@@ -91,8 +80,6 @@ export const login = [
 
       res.status(200).json({
         _id: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
         username: user.username,
         profilePic: user.profilePic,
       });
