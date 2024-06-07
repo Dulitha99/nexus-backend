@@ -16,6 +16,7 @@
 		"@tensorflow-models/toxicity": "^1.2.2",
 		"@tensorflow/tfjs": "^4.20.0",
 		"bcryptjs": "^2.4.3",
+		"body-parser": "^1.20.2",
 		"cookie-parser": "^1.4.6",
 		"cors": "^2.8.5",
 		"crypto-js": "^4.2.0",
@@ -27,7 +28,8 @@
 		"express-validator": "^7.1.0",
 		"helmet": "^7.1.0",
 		"jsonwebtoken": "^9.0.2",
-		"mongoose": "^8.1.1",
+		"mongoose": "^8.4.1",
+		"nodemailer": "^6.9.13",
 		"socket.io": "^4.7.4",
 		"xss-clean": "^0.1.4"
 	},
