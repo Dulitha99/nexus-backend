@@ -1,7 +1,7 @@
 import Conversation from "../models/conversation.model.js";
 import Message from "../models/message.model.js";
 import { getReceiverSocketId, io } from "../socket/socket.js";
-import { encrypt, decrypt } from './encryptionUtilities.js'; // Adjust the path as necessary
+import { encrypt, decrypt } from './encryptionUtilities.js'; 
 
 export const sendMessage = async (req, res) => {
     try {
@@ -36,7 +36,7 @@ export const sendMessage = async (req, res) => {
         if (receiverSocketId) {
             io.to(receiverSocketId).emit("newMessage", {
                 ...newMessage._doc,
-                message: decrypt(newMessage.message) // Decrypt before sending to client
+                message: decrypt(newMessage.message) //decrypt before sending the message
             });
         }
 

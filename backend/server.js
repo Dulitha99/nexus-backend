@@ -33,6 +33,7 @@ app.use(helmet({
       upgradeInsecureRequests: [],
     },
   },
+  //security headers
   frameguard: { action: 'deny' },
   hsts: { maxAge: 31536000, includeSubDomains: true, preload: true },
   xssFilter: true,

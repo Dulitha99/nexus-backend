@@ -1,8 +1,8 @@
 import crypto from 'crypto';
-
-const ENCRYPTION_KEY = 'test-encryption'.padEnd(32, '*'); // Ensure the key is 32 bytes long
-const IV_LENGTH = 16; // AES block size in bytes
-
+//encryption using AES-256-CBC
+const ENCRYPTION_KEY = 'test-encryption'.padEnd(32, '*'); 
+const IV_LENGTH = 16; 
+//encrypt function
 export function encrypt(text) {
     const iv = crypto.randomBytes(IV_LENGTH);
     const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(ENCRYPTION_KEY), iv);
@@ -10,7 +10,7 @@ export function encrypt(text) {
     encrypted = Buffer.concat([encrypted, cipher.final()]);
     return iv.toString('hex') + ':' + encrypted.toString('hex');
 }
-
+//decrypt function
 export function decrypt(text) {
     const textParts = text.split(':');
     const iv = Buffer.from(textParts.shift(), 'hex');

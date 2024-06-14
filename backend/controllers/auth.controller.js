@@ -23,7 +23,7 @@ export const signup = [
       if (user) {
         return res.status(400).json({ error: "Username already exists" });
       }
-
+      //Hashed password using bcrypt library
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -32,7 +32,7 @@ export const signup = [
 
       const newUser = new User({
         username,
-        password: hashedPassword,
+        password: hashedPassword,//hashed password
         gender,
         profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
         email,
