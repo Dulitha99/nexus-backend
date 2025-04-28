@@ -28,7 +28,7 @@
 		"express-validator": "^7.1.0",
 		"helmet": "^7.1.0",
 		"jsonwebtoken": "^9.0.2",
-		"mongoose": "^8.4.1",
+		"mongoose": "^8.13.2",
 		"nodemailer": "^6.9.13",
 		"socket.io": "^4.7.4",
 		"xss-clean": "^0.1.4"
